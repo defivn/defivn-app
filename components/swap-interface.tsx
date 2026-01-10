@@ -400,6 +400,11 @@ export default function SwapInterface() {
               Trao đổi tài sản (Swap)
             </h2>
           </div>
+          {quoteError && (
+            <div className="flex flex-row gap-2 items-center text-white bg-red-500 rounded-md p-2">
+              X<p>Lỗi khi lấy tỉ giá</p>
+            </div>
+          )}
           {/* Sell */}
           <div className="flex flex-col gap-2">
             <h2>Bạn bán</h2>
@@ -476,7 +481,7 @@ export default function SwapInterface() {
           </div>
           {/* Buy */}
           <div className="flex flex-col gap-2">
-            {quoteError && (
+            {exchangeRateError && (
               <div className="flex flex-row gap-2 items-center text-white bg-red-500 rounded-md p-2">
                 X<p>Lỗi khi lấy tỉ giá</p>
               </div>
