@@ -49,7 +49,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="vi" className={`${fontVietnamese.className} antialiased`} suppressHydrationWarning>
-      <body className="flex flex-col">
+      <body className="flex flex-col pb-12">
         <Providers>
           <Header />
           {children}
