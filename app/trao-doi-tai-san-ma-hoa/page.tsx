@@ -2,6 +2,7 @@ import SwapInterface from "@/components/swap-interface";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft } from "lucide-react";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 export default function Page() {
   return (
@@ -16,6 +17,7 @@ export default function Page() {
           <ChevronLeft /> Quay lại
         </Link>
       </Button>
+      <ConnectButton showBalance={false} />
       <SwapInterface />
     </div>
   );

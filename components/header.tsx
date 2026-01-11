@@ -2,7 +2,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ModeToggle } from "@/components/theme-toggle";
-import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 export function Header() {
   return (
@@ -17,10 +16,7 @@ export function Header() {
           priority
         />
       </Link>
-      <div className="flex flex-row gap-2">
-        <ModeToggle />
-        <ConnectButton showBalance={false} />
-      </div>
+      <ModeToggle />
     </header>
   );
 }

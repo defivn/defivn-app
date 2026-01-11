@@ -10,6 +10,7 @@ import {
   Check,
   CircleSlash,
   Loader2,
+  RefreshCcw,
 } from "lucide-react";
 import { useMediaQuery } from "@/hooks/use-media-query";
 import { highlightWalletAddressSections } from "@/lib/utils";
@@ -52,6 +53,8 @@ export default function SwapInterface() {
     data: balances,
     isLoading: isBalancesLoading,
     isError: isBalancesError,
+    isRefetching: isBalancesRefetching,
+    refetch: refetchBalances,
   } = useReadContracts({
     contracts: [
       {
@@ -317,7 +320,27 @@ export default function SwapInterface() {
   return (
     <div className="flex flex-col gap-4 mt-4">
       <div className="flex flex-col gap-4 border border-muted-foreground/10 rounded-md p-4">
-        <h2 className="text-lg text-muted-foreground">Thống kê tài sản</h2>
+        <div className="flex flex-row gap-2 justify-between items-center">
+          <h2 className="text-lg text-muted-foreground">Thống kê tài sản</h2>
+          <Button
+            variant="link"
+            size="icon"
+            className="hover:cursor-pointer"
+            onClick={() => {
+              refetchBalances();
+            }}
+            disabled={isBalancesLoading || isBalancesRefetching}
+          >
+            {
+              isBalancesLoading || isBalancesRefetching ? (
+                <Loader2 className="w-4 h-4 animate-spin" />
+              ) : (
+                <RefreshCcw className="w-4 h-4" />
+              )
+            }
+          </Button>
+        </div>
+
         <p className="text-sm break-all font-mono">
           {connection?.address &&
             highlightWalletAddressSections(connection.address).map(
